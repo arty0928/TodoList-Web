@@ -8,9 +8,12 @@ https://www.youtube.com/watch?v=aV7SCTz5DgM&list=PLI33CnBTx2MZGD7zAQ810_B8dDU_E8
         ☑ input form
         ☑ button click ⇒ insert new ul
         ☑ input form initialize
-    
+
+</p>
+
+<p>
     ver2: upgrade version of ver1
         base: ver1 
         ☑
-        
+
 </p>
