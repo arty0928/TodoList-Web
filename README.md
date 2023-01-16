@@ -8,6 +8,7 @@
     ☑ button click ⇒ insert new ul
     ☑ input form initialize
 
+![image](image_ver1.png)
 
 
 ## ver2: upgrade version of ver1
