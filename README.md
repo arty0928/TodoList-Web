@@ -12,5 +12,5 @@
 ## ver2: upgrade version of ver1
     base: ver1 
     ☑ delete
-    ☑ save
+    ☑ save data at storage to maintain todolist context after reload
 
