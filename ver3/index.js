@@ -11,7 +11,6 @@ const ul = document.querySelector('ul');
 let todos = [];
 
 const save = () => {
-
     //JSON.stringify : 객체를 String으로 변환
     localStorage.setItem('todos',JSON.stringify(todos));
 }
@@ -19,12 +18,8 @@ const save = () => {
 const delItem = (event) => {
     const target = event.target.parentElement;
 
-    // //delete ver1
-    // localStorage.removeItem(target.id);
-    // target.remove();
-    // save();
-
     //delete ver2
+    //target.id와 같은 애는 제외하고, 다른애들만 필터링해서 다시 todos에 넣고, save()
     todos = todos.filter((todo) =>
         todo.id !== parseInt(target.id)
     );
@@ -39,13 +34,19 @@ const addItem=(todo)=>{
         const li = document.createElement('li');
         const deleteBtn = document.createElement('button');
         const span = document.createElement('span');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox'
+        checkbox.id = 'checkbox';
+        checkbox.addEventListener('click',check);
         
         span.innerText= todo.text;
         deleteBtn.innerText = '삭제';
         deleteBtn.addEventListener('click',delItem);
 
+        li.appendChild(checkbox);
         li.appendChild(span);
         li.appendChild(deleteBtn);
+        
         ul.appendChild(li);
         li.id = todo.id;
     }
@@ -56,7 +57,8 @@ const handler = (event) => {
     event.preventDefault(); //새로고침 방지
 
         const todo = {
-            id : Date.now(),
+            check: false,
+            id : Date.now(), 
             text: input.value, 
         }
     
@@ -79,6 +81,47 @@ const init = () => {
 
 };
 
+
+function check(event){
+
+    //checkbox update된 애가 누군지 id로 식별
+    const target = event.target.parentElement;
+    console.log(target.id);
+
+    const checkObject = todos.find(it => (it.id) == target.id);
+    console.log(checkObject);
+    
+    const checkObjectCheck = checkObject.check;
+    console.log(checkObjectCheck);
+
+    const checkObjectId = checkObject.id;
+    console.log(checkObjectId);
+
+    const checkObjectText = checkObject.text;
+    console.log(checkObject.text);
+
+
+    if(event.target.checked == true){ //check할때  
+        console.log('check');
+        checkObject.check = true;
+    }
+    else{
+        checkObject.check = false;
+        console.log('unchecked');
+    }
+    
+
+    todos = todos.filter((todo) =>
+        todo.id !== parseInt(target.id)
+    );
+    save();
+    target.remove();
+
+    //다시 깔기
+
+    
+    
+}
+
 init();
 form.addEventListener('submit',handler);
-
