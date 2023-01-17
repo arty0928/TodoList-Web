@@ -8,7 +8,6 @@ const ul = document.querySelector('ul');
 3. 삭제버튼 -> 저장된 데이터 자체에서 해당 내용 지우기
 */
 
-
 let todos = [];
 
 const save = () => {
@@ -31,7 +30,6 @@ const delItem = (event) => {
     );
     save();
     target.remove();
-
 
 }
 
@@ -83,4 +81,5 @@ const init = () => {
 
 init();
 form.addEventListener('submit',handler);
+
 
